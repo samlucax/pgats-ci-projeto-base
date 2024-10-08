@@ -1,0 +1,32 @@
+#CI nivel 01 -  Disparar o Pieline de testes de forma manual a  partir de um cique
+
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+#triggers gatilhos de ecxec 
+on:
+  workflow_dispatch:
+
+jobs:
+  e2e-tests:
+
+   runs-on: ubuntu-latest
+
+
+   steps:
+     - uses: actions/checkout@v4
+
+     - name: Instalando yarn
+       run: npm install -g yarn
+
+     - name: Instalando dependencias
+       run: yarn
+
+     - name: Instalando playwright
+       run: yarn playwright install
+    
+     - name: Testes E2E (end-to-end) 
+       run: yarn run e2e
+    
+    
